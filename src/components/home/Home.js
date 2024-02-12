@@ -1,3 +1,7 @@
+import {
+  useCreateTicketMutation,
+  useGetTicketsQuery,
+} from "@/redux/features/ticket/ticketApi";
 import { Button } from "@material-tailwind/react";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -5,22 +9,23 @@ import { toast } from "sonner";
 import { SpinnerCircularFixed } from "spinners-react";
 
 const Home = () => {
+  const [createTicket, { isLoading }] = useCreateTicketMutation();
+  const { data } = useGetTicketsQuery();
   const { handleSubmit, register } = useForm();
-  const isLoading = false;
 
   const handleSave = async (data) => {
     const options = {
       data: data,
     };
-
-    console.log(options);
-    // const result = await toggleGlobal(options);
-    // if (result?.data?.success) {
-    //   toast.success("Data Save Success!");
-    // } else {
-    //   toast.error("Data Save Failed!");
-    // }
+    const result = await createTicket(options);
+    if (result?.data?.success) {
+      toast.success("Data Save Success!");
+    } else {
+      toast.error("Data Save Failed!");
+    }
   };
+
+  //   console.log(data);
   return (
     <main className=" w-full h-screen flex justify-center items-center">
       <form
