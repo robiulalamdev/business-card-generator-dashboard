@@ -44,31 +44,35 @@ const Home = () => {
             required
           />
         </div>
-        <div className="mb-4">
-          <span className="block tracking-[0.26px] leading-[16px] text-black text-sm mb-1">
-            URL
-          </span>
-          <input
-            {...register("url", { required: true })}
-            type="url"
-            className="w-full h-10 bg-gray-100 outline-none px-2 rounded text-sm"
-            placeholder="Enter URL"
-            required
-          />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="mb-4">
+            <span className="block tracking-[0.26px] leading-[16px] text-black text-sm mb-1">
+              Template No
+            </span>
+            <input
+              {...register("template_no", { required: true })}
+              type="number"
+              min={1}
+              className="w-full h-10 bg-gray-100 outline-none px-2 rounded text-sm"
+              placeholder="Template No"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <span className="block tracking-[0.26px] leading-[16px] text-black text-sm mb-1">
+              Code
+            </span>
+            <input
+              {...register("code", { required: true })}
+              type="number"
+              className="w-full h-10 bg-gray-100 outline-none px-2 rounded text-sm"
+              placeholder="Enter Code"
+              required
+            />
+          </div>
         </div>
 
-        <div className="mb-4">
-          <span className="block tracking-[0.26px] leading-[16px] text-black text-sm mb-1">
-            Code
-          </span>
-          <input
-            {...register("code", { required: true })}
-            type="number"
-            className="w-full h-10 bg-gray-100 outline-none px-2 rounded text-sm"
-            placeholder="Enter Code"
-            required
-          />
-        </div>
         <div className="mt-5 col-span-4">
           <Button
             type="submit"
